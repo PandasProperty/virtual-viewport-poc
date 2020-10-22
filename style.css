@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: clamp(1rem, 62.5%, 1.8rem);
+  color: white;
+}
+
+body {
+  background-color: black;
+  margin: 0;
+}
+
+.flex--middle--center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+}
+
+.virtual-viewport {
+  background: blue;
+}
+
+@media screen and (orientation: portrait) {
+  .virtual-viewport {
+    min-width: clamp(34.0rem, 100%, 64.0rem);
+    min-height: clamp(55.3rem, 100%, 103.3rem);
+  }
+}
+
+@media screen and (orientation: portrait) and (max-width: 340px) and (min-height: 760px) {
+  .virtual-viewport {
+    min-height: 76.0rem;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .virtual-viewport {
+    min-width: clamp(64.0rem, 100%, 136.6rem);
+    min-height: clamp(30.0rem, 100%, 64.0rem);
+  }
+}
+
+@media screen and (orientation: landscape) and (height: 300px) and (min-width: 880px) {
+  .virtual-viewport {
+    min-width: 88.0rem;
+  }
+}
