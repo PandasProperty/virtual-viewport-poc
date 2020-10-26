@@ -45,15 +45,13 @@ body {
 .with-aspect-ratio {
   position: relative;
   height: 0;
-  padding-top: calc(100% / (var(--aspect-ratio)));
+  padding-bottom: calc(100% / (var(--aspect-ratio)));
 }
 /* #endregion */
 
 #virtual-viewport {
-  background-color: orange;
-
-  min-width: 34rem;
-  min-height: 76rem;
+  --aspect-ratio: 340/553;
+  background-color: orange;  
 }
 
 #poker-table {
@@ -63,15 +61,16 @@ body {
   background-repeat: no-repeat;
 }
 
-#top-overlay {
-  
-}
+#top-overlay {}
+
 #bottom-overlay {}
 
 /* #region PORTRAIT */
 @media screen and (orientation: portrait) {  
   #poker-table {
     --aspect-ratio: 340/443;
+
+    padding-bottom: calc(100% / (var(--aspect-ratio)));
     background-image: url(assets/table-portrait.png);
   }
 }
