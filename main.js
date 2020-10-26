@@ -1,14 +1,14 @@
 function displaySize(target) {
-  return () => {
+  return (_) => {
     const { clientWidth, clientHeight } = target;
-    target.innerText = `${clientWidth}x${clientHeight}`;
+    target.insertAdjacentText("afterbegin", `${clientWidth}x${clientHeight}`);
   }
 }
 
-function main(e) {
+function main(_) {
   const vpp = document.querySelector(".virtual-viewport");
   displaySize(vpp)();
   window.addEventListener("resize", displaySize(vpp));
 }
 
-window.addEventListener("DOMContentLoaded", main);
+// window.addEventListener("DOMContentLoaded", main);

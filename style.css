@@ -1,3 +1,4 @@
+/* #region CSS reset */
 * {
   box-sizing: border-box;
 }
@@ -10,48 +11,91 @@ body,
 
 html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  /* font-size: calc(62.5% * 4); */
+  font-size: 62.5%;
   color: white;
 }
 
 body {
-  background-color: black;
   margin: 0;
+  background-color: black;
 }
+/* #endregion */
 
-.flex--middle--center {
+/* #region Utilities */
+.flex--column { 
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-flow: column nowrap;
 }
 
-.virtual-viewport {
-  background: blue;
+.flex--column.middle {
+  justify-content: center;
 }
 
-@media screen and (orientation: portrait) {
-  .virtual-viewport {
-    min-width: clamp(340px, 100%, 640px);
-    min-height: clamp(553px, 100%, 1033px);
+.flex--column.center {
+  align-items: center;
+}
+
+.centered {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.with-aspect-ratio {
+  position: relative;
+  height: 0;
+  padding-top: calc(100% / (var(--aspect-ratio)));
+}
+/* #endregion */
+
+#virtual-viewport {
+  background-color: orange;
+
+  min-width: 34rem;
+  min-height: 76rem;
+}
+
+#poker-table {
+  background-color: pink;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#top-overlay {
+  
+}
+#bottom-overlay {}
+
+/* #region PORTRAIT */
+@media screen and (orientation: portrait) {  
+  #poker-table {
+    --aspect-ratio: 340/443;
+    background-image: url(assets/table-portrait.png);
   }
 }
 
-@media screen and (orientation: portrait) and (max-width: 340px) and (min-height: 760px) {
-  .virtual-viewport {
-    min-height: 760px;
+@media screen and (orientation: portrait) and (max-width: 340px) {
+  #virtual-viewport {
+    max-height: 76rem;
   }
 }
+/* #endregion */
 
+/* #region LANDSCAPE */
 @media screen and (orientation: landscape) {
-  .virtual-viewport {
-    min-width: clamp(640px, 100%, 1366px);
-    min-height: clamp(300px, 100%, 640px);
+  #poker-table {
+    --aspect-ratio: 640/300;
+    background-image: url(assets/table-landscape.png);
   }
 }
 
-@media screen and (orientation: landscape) and (height: 300px) and (min-width: 880px) {
+/*
+@media screen and (orientation: landscape) and (max-height: 300px) {
   .virtual-viewport {
-    min-width: 880px;
+    max-width: 88rem;
   }
 }
+*/
+/* #endregion */
