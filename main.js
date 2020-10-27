@@ -3,6 +3,9 @@ function trimUnits(size) {
 }
 
 function handleResize({ target }) {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+  
   const { innerWidth, innerHeight } = target;
   document.title = `${innerWidth}x${innerHeight}`;
   
