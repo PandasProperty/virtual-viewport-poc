@@ -9,12 +9,22 @@
   <body>
     <main id="root" class="flex--column middle center">
       <section id="virtual-viewport">
-        <section id="top-group"></section>
+        <section id="top-group">
+          <div id="hamburger"></div>
+        </section>
         <picture id="poker-table">
-          <source media="screen and (orientation: landscape)" srcset="assets/table-landscape.png">
+          <source
+            media="screen and (orientation: landscape)"
+            srcset="assets/table-landscape.png"
+          />
           <img src="assets/table-portrait.png" />
+
+          <div id="opponent-1"></div>
+          <div id="chip"></div>
         </picture>
-        <section id="bottom-group"></section>
+        <section id="bottom-group">
+          <div id="chip"></div>
+        </section>
       </section>
     </main>
 
