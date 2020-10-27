@@ -5,8 +5,8 @@ function trimUnits(size) {
 function handleResize({ target }) {
   const { innerWidth, innerHeight } = target;
   document.title = `${innerWidth}x${innerHeight}`;
-  const vpp = document.querySelector("#virtual-viewport");
   
+  const vpp = document.querySelector("#virtual-viewport");
   const { width, height } = getComputedStyle(vpp);
 
   const scale = Math.min(
