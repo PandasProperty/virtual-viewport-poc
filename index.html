@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main id="root" class="flex--column middle">
-      <section id="virtual-viewport" class="with-aspect-ratio">
-        <section id="top-overlay"></section>
-        <section id="poker-table"></section>
-        <section id="bottom-overlay"></section>
+    <main id="root" class="flex--column middle center">
+      <section id="virtual-viewport">
+        <!-- <section id="top-overlay"></section> -->
+        <picture id="poker-table">
+          <source media="screen and (orientation: landscape)" srcset="assets/table-landscape.png">
+          <img src="assets/table-portrait.png">
+        </picture>
+        <!-- <section id="bottom-overlay"></section> -->
       </section>
     </main>
 

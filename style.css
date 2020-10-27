@@ -11,18 +11,31 @@ body,
 
 html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 62.5%;
+  font-size: calc((10 / var(--screen-min-width)) * 100vw);
   color: white;
 }
 
 body {
   margin: 0;
-  background-color: black;
+  background: transparent
+    linear-gradient(
+      180deg,
+      #03070c 0%,
+      #07101a 10%,
+      #0a1927 22%,
+      #0a131e 37%,
+      #070e16 56%,
+      #070a0f 74%,
+      #09131f 89%,
+      #06090c 100%
+    )
+    0% 0% no-repeat padding-box;
+  opacity: 1;
 }
 /* #endregion */
 
 /* #region Utilities */
-.flex--column { 
+.flex--column {
   display: flex;
   flex-flow: column nowrap;
 }
@@ -34,67 +47,53 @@ body {
 .flex--column.center {
   align-items: center;
 }
-
-.centered {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.with-aspect-ratio {
-  position: relative;
-  height: 0;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
 /* #endregion */
 
 #virtual-viewport {
-  --aspect-ratio: 340/553;
-  background-color: orange;  
+  background-color: lightcoral;
 }
 
 #poker-table {
-  background-color: pink;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+  display: block;
 }
 
-#top-overlay {}
+#poker-table img {
+  max-width: 100%;
+}
 
-#bottom-overlay {}
+#top-overlay {
+}
 
-/* #region PORTRAIT */
-@media screen and (orientation: portrait) {  
-  #poker-table {
-    --aspect-ratio: 340/443;
+#bottom-overlay {
+}
 
-    padding-bottom: calc(100% / (var(--aspect-ratio)));
-    background-image: url(assets/table-portrait.png);
+@media screen and (orientation: portrait) {
+  :root {
+    --screen-min-width: 340;
   }
-}
 
-@media screen and (orientation: portrait) and (max-width: 340px) {
   #virtual-viewport {
-    max-height: 76rem;
+    width: 34rem;
+    min-height: 55.3rem;
   }
-}
-/* #endregion */
 
-/* #region LANDSCAPE */
-@media screen and (orientation: landscape) {
   #poker-table {
-    --aspect-ratio: 640/300;
-    background-image: url(assets/table-landscape.png);
+    margin-top: 3.5rem;
   }
 }
 
-/*
-@media screen and (orientation: landscape) and (max-height: 300px) {
-  .virtual-viewport {
-    max-width: 88rem;
+@media screen and (orientation: landscape) {
+  :root {
+    --screen-min-width: 640;
+  }
+
+  #virtual-viewport {
+    width: 64rem;
+    height: 30rem;
+  }
+
+  #poker-table {
+    margin: 2rem auto 0 auto;
+    width: 52.4rem;
   }
 }
-*/
-/* #endregion */
